@@ -49,7 +49,7 @@ const RegisterUsers = (props: any) => {
          <label htmlFor="contact">Contact:</label>
          <input value={contact} onChange={(e) => setContact(e.target.value)} type="contact" placeholder="Enter your Phone Number.." name="contact" id="contact"/>
 
-         <label htmlFor="birthdate">E-mail:</label>
+         <label htmlFor="birthdate">Birthdate:</label>
          <input value={birthdate} onChange={(e) => setBirthdate(e.target.value)} type="birthdate" placeholder="Enter your Birthday in MM/DD/YYYY" name="birthdate" id="birthdate"/>
 
          <button type="submit">Register</button>
