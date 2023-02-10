@@ -1,19 +1,37 @@
 import React, { useState } from 'react';
 
 const LoginUsers = (props: any) => {
-    const [email, setEmail] = useState('');
+    const [username, setName] = useState('');
     const [password, setPassword] = useState('');
 
     const onSubmitClicked = (e: { preventDefault: () => void; }) => {
        e.preventDefault();
-       console.log(email);
+       console.log(username,password);
+
+       fetch("http://localhost:5000/login-user",{
+        method: "POST",
+        //crossDomain:true,
+        headers:{
+            "Content-Type":"application/json",
+            Accept:"application/json",
+            "Access-Control-Allow-Origin":"*",
+        },
+        body:JSON.stringify({
+            username,
+            password,
+        }),
+
+    }).then((res) => res.json())
+    .then((data) => {
+        console.log(data, "userRegister");
+    });
     }
     return (
     <>
        <div className="auth-form-container">
          <form className="login-form" onSubmit={onSubmitClicked}>
-             <label htmlFor="email">E-mail:</label>
-             <input value= {email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="yourname@gmail.com" name="email" id="email"/>
+             <label htmlFor="username">User Name:</label>
+             <input value= {username} onChange={(e) => setName(e.target.value)} type="username" placeholder="Enter User Name.." name="username" id="uesrname"/>
 
              <label htmlFor="password">Password:</label>
              <input value= {password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" name="password" id="password"/>
