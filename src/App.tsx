@@ -7,6 +7,7 @@ import LoginAdmin from './components/LoginAdmin';
 import { Route, Routes } from 'react-router-dom';
 import UserHome from './components/UserHome';
 import AdminHome from './components/AdminHome';
+import Service from './components/Service';
 
 
 function App() {
@@ -32,9 +33,10 @@ function App() {
       currentForm === "loginusers" ? <LoginUsers onFormSwitch={toogleforms}/> : <RegisterUsers onFormSwitch={toogleforms} />
       
       }
+      
 
     </div>
-    </div>
+   // </div>
   
   );
 }
