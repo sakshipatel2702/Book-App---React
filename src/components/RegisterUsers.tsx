@@ -30,6 +30,9 @@ const RegisterUsers = (props: any) => {
         }).then((res) => res.json())
         .then((data) => {
             console.log(data, "userRegister");
+            if(data.status=="Bookworm Signed Up!"){
+                alert("Register Sucessfull!");
+            }
         });
      }
 

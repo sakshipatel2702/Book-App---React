@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LoginUsers = (props: any) => {
+
     const [username, setName] = useState('');
     const [password, setPassword] = useState('');
 
@@ -24,6 +26,10 @@ const LoginUsers = (props: any) => {
     }).then((res) => res.json())
     .then((data) => {
         console.log(data, "userRegister");
+        if(data.status=="Bookworm Signed Up!"){
+            alert("Login Sucessfull!");
+            window.location.href = "./UserHome";
+        }
     });
     }
     return (

@@ -4,6 +4,10 @@ import './App.css';
 import LoginUsers from './components/LoginUsers';
 import RegisterUsers from './components/RegisterUsers';
 import LoginAdmin from './components/LoginAdmin';
+import { Route, Routes } from 'react-router-dom';
+import UserHome from './components/UserHome';
+import AdminHome from './components/AdminHome';
+
 
 function App() {
   //const [page, setPage] = useState(1);
@@ -15,25 +19,23 @@ function App() {
    }
 
   return (
+    <div>
+      <Routes>
+      <Route path="/UserHome" element={<UserHome/>}/>
+      <Route path="/LoginUsers" element={<LoginUsers/>}/>
+      <Route path="/AdminHome" element={<AdminHome/>}/>
+    </Routes>
+    
     <div className="App">
       {
-         currentForm === "loginusers" ? <LoginUsers onFormSwitch={toogleforms}/> : <RegisterUsers onFormSwitch={toogleforms} />
-        
+      
+      currentForm === "loginusers" ? <LoginUsers onFormSwitch={toogleforms}/> : <RegisterUsers onFormSwitch={toogleforms} />
+      
       }
 
     </div>
-  //   <div className="App">
-  //   <button onClick={() => setPage(page === 1 ? 2 : page === 2 ? 3 : 1)}>
-  //     Toggle Page
-  //   </button>
-  //   {page === 1 ? (
-  //     <LoginUsers />
-  //   ) : page === 2 ? (
-  //     <RegisterUsers />
-  //   ) : (
-  //     <LoginAdmin />
-  //   )}
-  // </div>
+    </div>
+  
   );
 }
 
