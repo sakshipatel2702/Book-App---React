@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Route, useNavigate } from 'react-router-dom';
+import UserHome from '../models/UserHome';
+
 
 const LoginUsers = (props: any) => {
+    const navigate = useNavigate();
 
     const [username, setName] = useState('');
     const [password, setPassword] = useState('');
@@ -28,10 +31,13 @@ const LoginUsers = (props: any) => {
         console.log(data, "userRegister");
         if(data.status=="Bookworm Signed Up!"){
             alert("Login Sucessfull!");
-            window.location.href = "./UserHome";
+            navigate('/UserHome')
         }
     });
     }
+
+  
+      
     return (
     <>
        <div className="auth-form-container">
@@ -42,10 +48,11 @@ const LoginUsers = (props: any) => {
              <label htmlFor="password">Password:</label>
              <input value= {password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" name="password" id="password"/>
 
-             <button type="submit">Login</button>
+             <button type="submit" onClick={onSubmitClicked}>Login</button>
           </form>
         <button className="link-btn" onClick={() => props.onFormSwitch('registerusers')}>Don't have an account yet? Just Register Here.</button>
-        <button className="link-btn" onClick={() => props.onFormSwitch('loginadmin')}>Are you Admin? Log In Here...</button>
+        <button className="link-btn" onClick={() => props.onFormSwitch('loginadmin')}>Are you Admin? Log In Here...</button> 
+        {/* <button className="link-btn" onClick={() => navigate('LoginAdmin')}>Are you Admin? Log In Here...</button>*/}
        </div> 
     </>
     );
